@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Converter</title>
+    <style>
+        /* Add a background image */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://thumbs.dreamstime.com/b/scattered-numbers-wallpaper-background-use-use-design-layouts-content-creation-scattered-numbers-wallpaper-166001386.jpg'); /* Replace with your image file or URL */
+            background-size: cover; /* Ensure the image covers the entire background */
+            background-position: center; /* Center the background image */
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* Input, select, and button styling */
+        input, select, button {
+            padding: 15px;
+            font-size: 18px;
+            margin: 10px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+
+        input, select {
+            width: 250px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #2575fc;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #6a11cb;
+        }
+
+        /* Styling for the result display */
+        #result {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        /* Styling for small screens */
+        @media (max-width: 600px) {
+            input, select, button {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Number Converter</h1>
+
+<!-- Input field for normal number (decimal) -->
+<input type="number" id="normal-number" placeholder="Enter a number" required>
+<br>
+
+<!-- Dropdown to select the conversion type -->
+<select id="conversion-type">
+    <option value="binary">Binary</option>
+    <option value="decimal">Decimal</option>
+    <option value="hexadecimal">Hexadecimal</option>
+</select>
+<br>
+
+<!-- Button to trigger the conversion -->
+<button onclick="convert()">Convert</button>
+
+<!-- Display the result of conversion -->
+<div id="result"></div>
+
+<script>
+    function convert() {
+        // Get the input value and conversion type
+        const normalNumber = document.getElementById('normal-number').value;
+        const conversionType = document.getElementById('conversion-type').value;
+        const resultElement = document.getElementById('result');
+
+        if (normalNumber === "") {
+            resultElement.textContent = "Please enter a number.";
+            return;
+        }
+
+        const number = parseInt(normalNumber);
+
+        if (conversionType === "binary") {
+            resultElement.textContent = `Binary: ${number.toString(2)}`;
+        } else if (conversionType === "decimal") {
+            resultElement.textContent = `Decimal: ${number}`;
+        } else if (conversionType === "hexadecimal") {
+            resultElement.textContent = `Hexadecimal: ${number.toString(16).toUpperCase()}`;
+        }
+    }
+</script>
+
+</body>
+</html>
